@@ -1,0 +1,12 @@
+---
+- name: update apt cache
+  apt: update_cache=yes
+- name: install core packages
+  apt: name={{ item }} state=present
+  with_items:
+    - git
+    - build-essential
+    - imagemagick
+    - curl
+    - automake
+    - libtool

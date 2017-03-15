@@ -1,0 +1,20 @@
+---
+- name: install apache
+  apt: name={{ item }} state=present
+  with_items:
+    - apache2
+    - apache2-doc
+    - apache2-utils
+    - apache2-threaded-dev
+- name: copy new virtual host to server
+  template:
+    src=templates/virtual-host.conf.j2
+    dest=/etc/apache2/sites-available/vagrant.conf
+- name: Enable Rewrite Module
+  apache2_module: state=present name=rewrite
+- name: disable default site
+  command: a2dissite 000-default
+- name: enable vagrant site
+  command: a2ensite vagrant
+- name: reload apache
+  service: name=apache2 state=reloaded

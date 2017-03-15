@@ -1,0 +1,16 @@
+---
+- hosts: all
+  vars:
+    document_root: /vagrant
+  tasks:
+    - name: update apt cache
+      apt: update_cache=yes
+      become: yes
+      become_method: sudo
+    - include: tasks/apache.yml
+      become: yes
+      become_method: sudo
+    - include: tasks/mysql.yml
+      become: yes
+      become_method: sudo
+    - include: tasks/php.yml

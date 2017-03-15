@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  become_method: sudo
+  vars:
+    craft_database: cfth_craft
+  roles:
+    - { role: general }
+    - { role: apache, document_root: /vagrant/public }
+    - { role: php }
+    - { role: mysql, root_db_password: root }
+  tasks:
+    - name: add Craft database
+      mysql_db: name={{ craft_database }} state=present
