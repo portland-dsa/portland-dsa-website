@@ -1,16 +1,14 @@
 ---
 - hosts: all
+  become: yes
+  become_method: sudo
   vars:
-    document_root: /vagrant
+    database: portland_dsa
+  roles:
+    - { role: general }
+    - { role: apache, document_root: /vagrant }
+    - { role: php }
+    - { role: mysql, root_db_password: root }
   tasks:
-    - name: update apt cache
-      apt: update_cache=yes
-      become: yes
-      become_method: sudo
-    - include: tasks/apache.yml
-      become: yes
-      become_method: sudo
-    - include: tasks/mysql.yml
-      become: yes
-      become_method: sudo
-    - include: tasks/php.yml
+    - name: add WP database
+      mysql_db: name={{ database }} state=present

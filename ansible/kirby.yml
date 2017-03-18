@@ -1,9 +1,0 @@
----
-- hosts: all
-  become: yes
-  become_method: sudo
-  tasks:
-  roles:
-    - { role: general }
-    - { role: apache, document_root: /vagrant }
-    - { role: php }

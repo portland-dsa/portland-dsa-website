@@ -18,7 +18,7 @@ Vagrant.configure(2) do |config|
   # using NFS for syncing the working directory to the virtual machine directory
   # and should let us set up local named virtual hosts (if desired)
   # https://stefanwrobel.com/how-to-make-vagrant-performance-not-suck
-  config.vm.network :private_network, ip: '192.168.100.100'
+  config.vm.network :private_network, ip: '192.168.3.17'
 
   # Configure VirtualBox to use 1/4 available memory
   # https://stefanwrobel.com/how-to-make-vagrant-performance-not-suck
@@ -45,7 +45,7 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision :ansible do |ansible|
-    ansible.playbook = "playbook.yml"
+    ansible.playbook = "ansible/playbook.yml"
   end
 
   # Sync current directory to `/vagrant` using NFS
