@@ -1,4 +1,7 @@
 # Don't forget to ensure wp-config.php is ignored from the forked repo
 # wp-config.php
 wp-content/uploads
-.vagrant
+.vagrant/
+node_modules
+.env
+log/capistrano.log
