@@ -6,14 +6,20 @@ Author URI: http://whoisgina.com
 Version: 1.0
 */
 
-@import 'include/variables';
-@import 'include/mixins';
+@import
+'include/variables',
+'include/mixins',
+'include/forms'
+;
 
-@import 'base';
-@import 'layout';
+@import
+'base',
+'layout'
+;
 
 @import 'pages/home';
 
-@import 'shared/header';
-
-
+@import
+'shared/header',
+'shared/footer'
+;
