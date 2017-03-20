@@ -1,0 +1,54 @@
+header {
+  height: 150px;
+
+  h1 {
+    display: inline-block;
+    margin-top: 4rem;
+  }
+}
+
+.header--logo {
+  float: left;
+  height: 150px;
+  margin-right: 1rem;
+}
+
+.header--dsa {
+  color: $color-red;
+  display: block;
+}
+
+.main-nav {
+  color: $color-gray;
+  margin: 1rem 0 0;
+}
+
+.main-nav--item {
+  display: inline-block;
+  font-size: $type-size-medium;
+  margin: 0 4rem 0 0;
+}
+
+.navigation-social {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.navigation-social--element-container {
+  display: inline-block;
+}
+
+.social-icon {
+  @include icon;
+
+  &::after {
+    content: '' !important;
+  }
+}
+
+@each $account in (twitter facebook instagram vimeo youtube) {
+  .navigation-social--#{$account} {
+    background-image: url('assets/images/#{$account}.svg');
+  }
+}
