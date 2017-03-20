@@ -4,7 +4,14 @@ header {
   h1 {
     display: inline-block;
     margin-top: 4rem;
+    line-height: 1;
   }
+}
+
+header,
+.callout,
+.cta-container {
+  padding: 0 60px;
 }
 
 .header--logo {
