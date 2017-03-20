@@ -1,7 +1,13 @@
+/*!
+Theme Name: Portland DSA
+Description: WordPress theme for the Portland DSA. Based on Em Vee Cee by Travis Meyer.
+Author: Gina Giampaolo
+Author URI: http://whoisgina.com
+Version: 1.0
+*/
 html {
   margin: 0;
   padding: 0;
-
 }
 
 body {
@@ -38,7 +44,6 @@ h6 {
   padding: 0;
 }
 
-
 ul {
   list-style: none;
   margin: 0;
@@ -56,3 +61,5 @@ figure {
   margin: 0;
   padding: 0;
 }
+
+/*# sourceMappingURL=style.css.map */

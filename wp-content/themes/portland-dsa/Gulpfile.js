@@ -23,7 +23,7 @@ gulp.task('clean-scripts', function() {
 * Delete CSS from the build directory
 */
 gulp.task('clean-css', function() {
-  gulp.src('assets/css/**/*.css', {read: false})
+  gulp.src('style.css', {read: false})
     .pipe(clean());
 });
 
@@ -56,14 +56,14 @@ gulp.task('transpile:production', ['clean-scripts'], function() {
  */
 
 var compile_sass = function(compress) {
-  return gulp.src('src/scss/**/app.scss')
+  return gulp.src('src/scss/**/style.scss')
     .pipe(gulpif(!compress, sourcemaps.init({ loadMaps: true })))
     .pipe(sass({
       outputStyle: (compress ? 'compressed' : 'expanded'),
       includePaths: require('node-reset-scss').includePaths
     }).on('error', sass.logError))
     .pipe(gulpif(!compress, sourcemaps.write('.')))
-    .pipe(gulp.dest('assets/css'));
+    .pipe(gulp.dest('.'));
 }
 
 gulp.task('sass:development', ['clean-css'], function() {
@@ -78,7 +78,7 @@ gulp.task('sass:production', ['clean-css'], function() {
  */
 gulp.task('watch', ['transpile:development', 'sass:development'], function() {
   gulp.watch('src/javascript/**/*.js', ['transpile:development']);
-  gulp.watch('src/scss/**/*.css', ['sass:development']);
+  gulp.watch('src/scss/**/*.scss', ['sass:development']);
 });
 
 gulp.task('build', ['sass:production', 'transpile:production']);

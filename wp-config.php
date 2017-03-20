@@ -40,7 +40,7 @@ define('DB_COLLATE', '');
 define( 'WP_CONTENT_DIR', dirname(__FILE__) . '/wp-content' );
 define( 'WP_PLUGIN_URL',  $root_url . '/wp-content/plugins');
 define( 'WP_HOME',        $root_url );
-define( 'WP_SITEURL',     $root_url . '/wordpress' );
+define( 'WP_SITEURL',     $root_url . '/' );
 
 
 /**#@+
