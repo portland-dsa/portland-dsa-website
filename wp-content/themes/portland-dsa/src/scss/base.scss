@@ -5,10 +5,11 @@ html {
 }
 
 body {
-  margin: 0 auto;
-  padding: 0 60px;
   font-family: 'Klima', Helvetica, sans-serif;
   font-size: $type-size-base;
+  margin: 0;
+  padding: 0;
+
 }
 
 header,
@@ -25,7 +26,9 @@ p {
 }
 
 a {
-  color: inherit;
+  color: $color-red;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 h1,
