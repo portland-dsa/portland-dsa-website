@@ -1,10 +1,21 @@
 // Colors
-$color-black: #000000;
-$color-white: #ffffff;
+$color-black: #000;
+$color-gray-light: #f1f1f1;
+$color-gray: #868686;
+$color-green: #00a430;
+$color-red: #f30000;
+$color-white: #fff;
 
 // Screen Sizes
-
 $breakpoint-desktop: 1500px;
 $breakpoint-laptop: 1250px;
 $breakpoint-tablet: 1024px;
 $breakpoint-mobile: 640px;
+
+// Typography
+$type-size-base: 16px;
+
+$type-size-medium: 20px;
+
+$type-size-big: 26px;
+$type-leading-big: 26px;
