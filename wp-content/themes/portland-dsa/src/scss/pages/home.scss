@@ -1,3 +1,20 @@
+.homepage-strip {
+  margin: 4rem 0;
+}
 
+.homepage-strip--image {
+  width: 30%;
+  height: 250px;
+  background: $color-gray;
+  display: inline-block;
+  margin: 0 1rem 0 0;
+}
 
+.homepage-strip--content {
+  display: inline-block;
+  width: 60%;
+}
 
+.homepage-strip--content-headline {
+  margin: 0 0 .5rem;
+}
