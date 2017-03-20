@@ -2,6 +2,14 @@
 <section class="callout">
   <p>We are a local chapter of the Democratic Socialists of America, the largest socialist organization in the US. We organize together for economic, racial, and social justice in Portland and nation-wide. <a>Learn more about what we stand for.</a></p>
 </section>
+  </div><div class="cta-card">
+    <h1 class="cta-card--headline">Sign up for our newsletter</h1>
+    <p class="cta-card--content">Stay in touch! Join our newsletter to learn about upcoming events and community actions.</p>
+    <fieldset class="newsletter-subscribe">
+      <input class="newsletter-subscribe--input" placeholder="Email address"></input>
+      <button class="newsletter-subscribe--button">Subscribe</button>
+    </fieldset>
+  </div>
 <main class="main-content">
   <article class="homepage-strip">
     <div class="homepage-strip--image"></div>
