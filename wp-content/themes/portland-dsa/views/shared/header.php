@@ -9,12 +9,32 @@
   </head>
 
   <header>
-    <h1>Democratic Socialists of America</h1>
-    <h1>Portland, Oregon</h1>
-    <ul>
-      <li>Who we are</li>
-      <li>What is democratic socialism</li>
-      <li>Calendar</li>
-      <li>Join us</li>
-    </ul/>
+    <img src="<?php echo get_stylesheet_directory_uri();?>/assets/images/portland-dsa-logo.svg" class="header--logo">
+    <h1>
+      <span class="header--dsa">Democratic Socialists of America</span>
+      Portland, Oregon
+    </h1>
+
+    <nav class="main-nav">
+      <ul>
+        <li class="main-nav--item">Who we are</li>
+        <li class="main-nav--item">What is democratic socialism</li>
+        <li class="main-nav--item">Calendar</li>
+        <li class="main-nav--item">Join us</li>
+      </ul/>
+    </nav>
+
+    <nav class="navigation-social">
+      <ul>
+        <li class="navigation-social--element-container">
+          <a href="https://twitter.com/portlanddsa" target="_blank" class="navigation-social--twitter social-icon"></a>
+        </li>
+        <li class="navigation-social--element-container">
+          <a href="https://www.facebook.com/groups/PortlandDSA/" target="_blank" class="navigation-social--facebook social-icon"></a>
+        </li>
+        <li class="navigation-social--element-container">
+          <a href="https://www.instagram.com/portlanddsa/" target="_blank" class="navigation-social--instagram social-icon"></a>
+        </li>
+      </ul>
+    </nav>
   </header>

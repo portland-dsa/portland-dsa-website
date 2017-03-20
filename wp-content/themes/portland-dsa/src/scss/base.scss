@@ -5,9 +5,10 @@ html {
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  margin: 0 auto;
+  padding: 0 60px;
   font-family: 'Klima', Helvetica, sans-serif;
+  font-size: $type-size-base;
 }
 
 header,
@@ -37,6 +38,10 @@ h6 {
   padding: 0;
 }
 
+h1 {
+  font-size: $type-size-big;
+  line-height: $type-leading-big;
+}
 
 ul {
   list-style: none;
