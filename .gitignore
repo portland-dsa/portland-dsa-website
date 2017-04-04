@@ -1,5 +1,7 @@
 # Don't forget to ensure wp-config.php is ignored from the forked repo
 # wp-config.php
+
+wordpress
 wp-content/uploads
 .vagrant/
 node_modules
