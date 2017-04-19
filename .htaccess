@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^(www.)?192.168.3.17$
+RewriteCond %{REQUEST_URI} !^/wordpress/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /wordpress/$1
+RewriteCond %{HTTP_HOST} ^(www.)?192.168.3.17$
+RewriteRule ^(/)?$ wordpress/index.php [L] 
+</IfModule>

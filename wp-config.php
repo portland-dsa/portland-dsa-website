@@ -16,7 +16,9 @@
 
 // TODO: Add environment settings for development, staging, and production
 
-// $root_url = 'portland-dsa.dev';
+// $root_url = '192.168.3.17';
+
+$base = dirname(__FILE__);
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
@@ -37,10 +39,10 @@ define('DB_CHARSET', 'utf8');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
-define( 'WP_CONTENT_DIR', dirname(__FILE__) . '/wp-content' );
-define( 'WP_PLUGIN_URL',  $root_url . '/wp-content/plugins');
-define( 'WP_HOME',        $root_url );
-define( 'WP_SITEURL',     $root_url . '/' );
+define( 'WP_CONTENT_DIR', $base . '/wp-content' );
+define( 'WP_PLUGIN_URL', $base . '/wp-content/plugins' );
+define( 'WP_HOME', '/' );
+define( 'WP_SITEURL', '/' );
 
 
 /**#@+

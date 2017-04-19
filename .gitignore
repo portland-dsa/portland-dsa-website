@@ -7,6 +7,7 @@ wp-content/uploads
 node_modules
 .env
 log/capistrano.log
+.DS_Store
 
 wp-content/themes/portland-dsa/style.css
 wp-content/themes/portland-dsa/style.css.map
