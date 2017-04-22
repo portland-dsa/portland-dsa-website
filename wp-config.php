@@ -14,24 +14,31 @@
  * @package WordPress
  */
 
-// TODO: Add environment settings for development, staging, and production
 
-// $root_url = '192.168.3.17';
+// ============
+// = Database =
+// ============
 
-$base = dirname(__FILE__);
-
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
+// Development (vagrant)
+// ---------------------------------------
 define('DB_NAME', 'portland_dsa');
-
-/** MySQL database username */
 define('DB_USER', 'root');
-
-/** MySQL database password */
 define('DB_PASSWORD', 'root');
-
-/** MySQL hostname */
 define('DB_HOST', 'localhost');
+
+// Staging
+// ---------------------------------------
+// define('DB_NAME', 'portland_dsa');
+// define('DB_USER', 'root');
+// define('DB_PASSWORD', 'root');
+// define('DB_HOST', 'localhost');
+
+// Production
+// ---------------------------------------
+// define('DB_NAME', 'portland_dsa');
+// define('DB_USER', 'root');
+// define('DB_PASSWORD', 'root');
+// define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
@@ -39,11 +46,44 @@ define('DB_CHARSET', 'utf8');
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 
-define( 'WP_CONTENT_DIR', $base . '/wp-content' );
-define( 'WP_PLUGIN_URL', $base . '/wp-content/plugins' );
-define( 'WP_HOME', '/' );
-define( 'WP_SITEURL', '/' );
 
+// ============
+// = Root URL =
+// ============
+
+// This will detect if we're using httpS and automatically
+// use the current domain being accessed.
+$currentHttpProtocol = ( isset($_SERVER['HTTPS']) ) ? 'https://' : 'http://';
+$root_url            = $currentHttpProtocol . $_SERVER['SERVER_NAME'];
+
+/*
+FYI, the URLs are:
+- Development server (vagrant):
+  http://portland-dsa.dev
+- Staging server:
+  http://138.68.246.220
+- Production server (note httpS):
+  https://portlanddsa.org
+
+Assuming you haven't modified the vagrant boxes' IP address,
+please add the following to your 'hosts' file:
+192.168.3.17 portland-dsa.dev
+*/
+
+
+// =======================
+// = WordPress locations =
+// =======================
+
+define( 'WP_HOME',        $root_url );
+define( 'WP_SITEURL',     $root_url . '/wordpress' );
+define( 'WP_CONTENT_URL', $root_url . '/wp-content' );
+define( 'WP_CONTENT_DIR', dirname(__FILE__) . '/wp-content' );
+
+
+// ===================
+// = Everything else =
+// ===================
 
 /**#@+
  * Authentication Unique Keys and Salts.
