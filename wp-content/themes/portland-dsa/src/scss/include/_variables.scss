@@ -1,21 +1,24 @@
 // Colors
-$color-black: #000;
-$color-gray-light: #f1f1f1;
-$color-gray: #868686;
-$color-green: #00a430;
-$color-red: #f30000;
-$color-white: #fff;
+$colorGrayLight: #f1f1f1;
+$colorGray:      #909090;
+$colorGreen:     #00a430;
+$colorRed:       #f30000;
+$colorRedDark:   #D70000;
+$colorWhite:     #fff;
 
 // Screen Sizes
-$breakpoint-desktop: 1500px;
-$breakpoint-laptop: 1250px;
-$breakpoint-tablet: 1024px;
-$breakpoint-mobile: 640px;
+$breakpointTablet: 768px;
+$breakpointLaptop: 1100px;
+// $breakpointDesktop: 1500px;
 
-// Typography
-$type-size-base: 16px;
+// Block stuff
+$commonBlockSpacing: 1rem;
+$borderStyle1: 1px solid $colorGray;
+$borderRadius1: 5px;
 
-$type-size-medium: 20px;
+// Main logo
+$logoWidth: 76px;
+$logoHeight: 72px;
 
-$type-size-big: 26px;
-$type-leading-big: 40px;
+// Klima font has funky baseline stuff going on. Have to do a padding hack :(
+$klimaFontHack: 0.75em;

@@ -1,26 +1,38 @@
 /*!
-Theme Name: Portland DSA
+Theme Name: Portland DSA 2017
+Theme URI: https://github.com/portland-dsa/portland-dsa-website
 Description: WordPress theme for the Portland DSA. Based on Em Vee Cee by Travis Meyer.
-Author: Gina Giampaolo
-Author URI: http://whoisgina.com
+Author: Portland DSA Communications Working Group
+Author URI: Gina Giampaolo @ http://whoisgina.com/, Andy Pressman @ https://rumo.rs/, Joel Coreson @ https://prisedesign.com/
 Version: 1.0
+
+Using the power of this wordpress theme, democratic socialism will triumph over capitalism ✊🌹
 */
 
+
+// Helpers
 @import
 'include/variables',
-'include/mixins',
-'include/forms',
-'include/fonts'
+'include/mixins'
 ;
 
+// Main base styles
 @import
-'base',
-'layout'
+'include/normalize',
+'include/fonts',
+'include/forms',
+'shared/global',
+'main'
 ;
 
-@import 'pages/home';
-
+// Build upon our base
 @import
 'shared/header',
 'shared/footer'
+;
+
+// Page-specific styles
+@import
+'pages/home',
+'pages/joinUs'
 ;

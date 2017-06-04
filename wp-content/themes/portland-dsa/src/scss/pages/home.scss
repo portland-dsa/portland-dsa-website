@@ -1,20 +1,99 @@
-.homepage-strip {
-  margin: 4rem 0;
+// Vars that apply to styles in this file only (don't have global use)
+$overlapMeasurement_topicStrip: $commonBlockSpacing * 5;
+
+.topicStripsContainer {
+  @include baseModuleFontSize();
+
+  // Stretch out beyond our parent container for full bleed background
+  margin-left: -$commonBlockSpacing * 1;
+  margin-right: -$commonBlockSpacing * 1;
+  padding: $commonBlockSpacing * 1;
+
+  // Scoot up for overlap effect
+  padding-top: $overlapMeasurement_topicStrip;
+  margin-top: -$overlapMeasurement_topicStrip;
+
+  background-color: $colorGrayLight;
 }
 
-.homepage-strip--image {
-  width: 30%;
-  height: 250px;
-  background: $color-gray;
-  display: inline-block;
-  margin: 0 1rem 0 0;
+.topicStrip {
+  margin: 4em 0;
+
+  &:first-of-type {
+    margin-top: $commonBlockSpacing;
+  }
+
+  &:last-of-type {
+    margin-bottom: $commonBlockSpacing * 2;
+  }
+
+  &__headline {
+    margin: 0.25em 0;
+    font-size: 1.4em;
+  }
+
+  // &__textContentContainer {}
+  // &__image {}
+
+  &__content p {
+    margin: 0;
+  }
 }
 
-.homepage-strip--content {
-  display: inline-block;
-  width: 60%;
+// ##################################################################
+// ####### Media Queries ############################################
+// ##################################################################
+
+
+// =====================
+// = TABLET and larger =
+// =====================
+@media screen and (min-width: $breakpointTablet) {
+
+
+.topicStrip {
+  display: flex;
+  align-items: flex-end;
+
+  &__image {
+    margin-right: $commonBlockSpacing;
+    flex: 1 0 380px;
+  }
+
+  &__headline {
+    font-size: 1.6em;
+  }
+
+  // &__content {}
 }
 
-.homepage-strip--content-headline {
-  margin: 0 0 .5rem;
+
+} // /TABLET and larger
+
+
+// =====================
+// = LAPTOP and larger =
+// =====================
+
+@media screen and (min-width: $breakpointLaptop) {
+
+
+.topicStripsContainer {
+  // Stretch out beyond our parent container for full bleed background
+  margin-left: -$commonBlockSpacing * 4;
+  margin-right: -$commonBlockSpacing * 4;
+  padding: $commonBlockSpacing * 4;
+
+  // Scoot up for overlap effect
+  padding-top: $overlapMeasurement_topicStrip;
+  margin-top: -$overlapMeasurement_topicStrip;
 }
+
+.topicStrip {
+  &:last-of-type {
+    margin-bottom: $commonBlockSpacing;
+  }
+}
+
+
+} // /LAPTOP and larger

@@ -1,24 +1,30 @@
-button {
-  background: $color-green;
-  border: 0;
-  border-radius: 6px;
-  color: $color-white;
-  font-family: 'Klima';
-  font-size: $type-size-base;
+.button {
+  display: inline-block;
+
+  padding: ($commonBlockSpacing * .7) $commonBlockSpacing;
+  // Klima has weird baseline issues. Need to use a hack :(
+  padding-top: $klimaFontHack;
+
+  border: 1px solid $colorGreen;
+  border-radius: $borderRadius1;
+
+  background: $colorGreen;
+  color: $colorWhite;
+
+  font-size: 1em;
   font-weight: bold;
-  height: 50px;
-  letter-spacing: 2px;
-  padding: 1.1rem 1.5rem 1rem;
+  letter-spacing: 0.2ex;
   text-transform: uppercase;
-}
+  text-decoration: none;
 
-input {
-  font-size: $type-size-base;
-  height: 47px;
-  padding: 0 0 0 .5rem;
-
-  &:focus {
-    outline: 0;
+  // The klima font hack works fine when applied to <a>'s, but it
+  // chokes on <input>'s. The below is soooooo hacky, and I truly hate
+  // doing this, but here it is :( This makes the padding on inputs
+  // resemble the padding on non-inputs. 0.12 is a magic number that
+  // makes it look good. Please someone fix this later.
+  @at-root input#{&} {
+    padding-top: $klimaFontHack - 0.12;
+    padding-bottom: $klimaFontHack - 0.12;
   }
 }
 
@@ -27,3 +33,90 @@ fieldset {
   margin: 0;
   padding: 0;
 }
+
+input {
+  padding: ($commonBlockSpacing * .7) $commonBlockSpacing;
+  border: 1px solid $colorGray;
+  border-radius: 0;
+
+  color: lime;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+// Remove annoying inner shadow in iOS input boxes
+input:not([type='checkbox']):not([type='radio']) {
+  -webkit-appearance: none;
+}
+
+// Wide text boxes
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="text"] {
+  width: 100%;
+}
+
+// Custom radio button image code from:
+// http://code.stephenmorley.org/html-and-css/styling-checkboxes-and-radio-buttons/
+// Thanks Stephen
+input[type='radio']:not(old) + label{
+  display: inline-block;
+  margin: 0.5em 0;
+  margin-left: -24px;
+  padding-left: 30px;
+  background: url('/assets/images/radioButton.svg') no-repeat 0 0;
+  line-height: 28px;
+  background-size: 28px;
+}
+
+input[type=radio]:not(old):checked + label{
+  background-position : 0 -30px;
+}
+
+// Placeholder styling
+// Thanks toscho at https://stackoverflow.com/a/2610741
+// ------------------------------------------------------------
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: $colorGray;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: $colorGray;
+  opacity:  1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: $colorGray;
+  opacity:  1;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: $colorGray;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: $colorGray;
+}
+
+
+
+// ##################################################################
+// ####### Media Queries ############################################
+// ##################################################################
+
+// =====================
+// = TABLET and larger =
+// =====================
+@media screen and (min-width: $breakpointTablet) {
+
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="text"] {
+  width: 35ex;
+}
+
+
+} // /TABLET and larger

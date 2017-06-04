@@ -1,0 +1,131 @@
+// =================
+// = HTML elements =
+// =================
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+
+  // This font-size is the base for all REM font sizes!
+  font-size: 16px;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  @include preventMarginCollapse;
+
+  font-family: 'Klima', Helvetica, sans-serif;
+}
+
+a {
+  color: $colorRed;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin:0;
+  padding:0;
+}
+
+// See _forms.scss!
+// input {}
+
+img,
+svg,
+object {
+  max-width: 100%;
+  border: 0;
+}
+
+nav ul,
+footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+// =================
+// = Global styles =
+// =================
+
+// Shared styles for socialLinks that appear in both the header and footer
+// -----------------------------------
+@mixin socialLinks( $iconWidth, $iconHeight ) {
+  margin: $commonBlockSpacing 0;
+
+  // This is probably a <ul>
+  &__itemContainer {
+    display: flex;
+    list-style: none
+  }
+
+  &__item {
+    @each $account in (twitter facebook instagram) {
+      &__link--#{$account} {
+        @include backgroundImageReplacementBlock( $iconWidth, $iconHeight, 'assets/images/#{$account}.svg' );
+        margin: 0 0.5em;
+      }
+    }
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+// Image replacement
+// Swap out text for an image as background. See related mixins in src/include/_mixins.scss
+.ir {
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  *text-indent: -9999px;
+}
+
+.ir:before {
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
+}
+
+// This is an anal-retentive UI thing, but hey, why not?
+// When the mobile menu is toggled, some JS adds a <div> with this
+// .noContentShiftDiv class. We style this div to roughly the same height
+// as the opened mobile menu. The purpose of all this is so the content
+// doesn't shift around as the menu toggles on and off. See
+// javascript/app.js for the JS counterpart
+.noContentShiftDiv {
+  height: 12rem;
+}
+
+
+// ##################################################################
+// ####### Media Queries ############################################
+// ##################################################################
+
+
+// =====================
+// = Tablet and larger =
+// =====================
+@media screen and (min-width: $breakpointTablet) {
+
+.mobileOnly {
+  display: none;
+}
+
+
+} // /Tablet and larger

@@ -1,37 +1,87 @@
 // Screen Sizes
 
-@mixin mobile {
-  @media screen and (max-width: $breakpoint-mobile) {
-    @content;
-  }
+// Joel says: I tried it this way and my brain didn't like it. I'm
+// instead just putting media queries at the bottom of the various
+// .scss files.
+//
+// @mixin mobile {
+//   @media screen and (min-width: $breakpoint-mobile) {
+//     @content;
+//   }
+// }
+
+// @mixin tablet {
+//   @media screen and (min-width: $breakpointTablet) {
+//     @content;
+//   }
+// }
+
+// @mixin laptop {
+//   @media screen and (min-width: $breakpointLaptop) {
+//     @content;
+//   }
+// }
+
+// @mixin desktop {
+//   @media screen and (min-width: $breakpoint-desktop) {
+//     @content;
+//   }
+// }
+
+// Set base font size for areas of the page that one could concider
+// a self-contained module
+@mixin baseModuleFontSize() {
+  font-size: 1rem;
 }
 
-@mixin tablet {
-  @media screen and (max-width: $breakpoint-tablet) {
-    @content;
-  }
+@mixin preventMarginCollapse {
+  padding-top: 1px;
+  padding-bottom: 1px;
+  margin-top: -1px;
+  margin-bottom: -1px;
 }
 
-@mixin laptop {
-  @media screen and (max-width: $breakpoint-laptop) {
-    @content;
+// // Clear a float fix (from H5BP)
+// @mixin clearfix {
+//   &:before,
+//   &:after {
+//     content: " ";
+//     display: table;
+//   }
+
+//   &:after {
+//     clear: both;
+//   }
+
+//   & {
+//     *zoom: 1;
+//   }
+// }
+
+
+// Image replacement
+// Swap out text for an image as background. See related .ir styles in src/shared/global.scss
+
+@mixin backgroundImageFillSize($width, $height, $imagePath: null) {
+  // Doesn't set bg image if none is supplied
+  @if $imagePath {
+    background-image: url($imagePath);
   }
+
+  background-size: $width $height;
 }
 
-@mixin desktop {
-  @media screen and (max-width: $breakpoint-desktop) {
-    @content;
-  }
+@mixin backgroundImageBlock($width, $height, $imagePath: null) {
+  width: $width;
+  height: $height;
+
+  @include backgroundImageFillSize($width, $height, $imagePath);
 }
 
-// Decorators
+@mixin backgroundImageReplacementBlock($width, $height, $imagePath) {
+  @extend .ir;
 
-@mixin icon {
-  background-position: 0;
-  background-repeat: no-repeat;
-  background-size: 20px 20px;
-  display: inline-block;
-  height: 20px;
-  margin-left: 5px;
-  width: 20px;
+  display: block;
+
+  @include backgroundImageBlock($width, $height, $imagePath);
 }

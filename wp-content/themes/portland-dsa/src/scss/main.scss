@@ -1,0 +1,214 @@
+// Vars that apply to styles in this file only (don't have global use)
+$overlapMeasurement_pageContentArea: $commonBlockSpacing * 4.5;
+
+
+.main {
+  margin: $commonBlockSpacing;
+
+  line-height: 1.4;
+
+  &__greeting,
+  &__greeting--followedByOverlapEffectElem {
+    font-size: 1.3em;
+    // margin-bottom: $overlapMeasurement_pageContentArea * 1.5;
+    margin-bottom: $commonBlockSpacing * 2;
+  }
+
+  &__greeting--followedByOverlapEffectElem {
+    margin-bottom: $overlapMeasurement_pageContentArea * 1.5;
+  }
+}
+
+.containerCta {
+  position: relative;
+  margin: $commonBlockSpacing 0;
+}
+
+.ctaCard {
+  @include baseModuleFontSize();
+
+  margin: $commonBlockSpacing 0;
+  padding: $commonBlockSpacing * 1.5;
+  border: $borderStyle1;
+  border-radius: $borderRadius1;
+
+  background: $colorWhite;
+
+  &__headline {
+    font-size: 1.2em;
+    line-height: 1;
+  }
+
+  &__content {
+    margin: 1em 0;
+  }
+
+  // &__button {}
+
+  // Simple "one text field; one button" form to collect an email addy
+  &__collectEmailForm {
+    &__textInput {
+      width: 100%;
+      margin-bottom: 1em;
+
+      border: $borderStyle1;
+    }
+
+    &__button {
+      padding: $klimaFontHack;
+    }
+  }
+}
+
+.containerPageContentArea,
+.containerPageContentArea--pageJoin {
+  @include baseModuleFontSize();
+
+  // Stretch out beyond our parent container for full bleed background
+  margin-left: -$commonBlockSpacing * 1;
+  margin-right: -$commonBlockSpacing * 1;
+  padding: $commonBlockSpacing * 1;
+
+  // Pull up item below (which should always be .containerCta)
+  // for overlap effect
+  padding-bottom: $overlapMeasurement_pageContentArea * 2;
+  margin-bottom: -$overlapMeasurement_pageContentArea * 2;
+
+  background-color: $colorGrayLight;
+
+  .pageContentArea {
+    &__image {
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: -$overlapMeasurement_pageContentArea;
+    }
+
+    &__headline {
+      margin: 1em 0;
+      text-align: center;
+    }
+
+    &__section {
+      margin: 6em 0;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+
+
+// ##################################################################
+// ####### Media Queries ############################################
+// ##################################################################
+
+
+// =====================
+// = TABLET and larger =
+// =====================
+@media screen and (min-width: $breakpointTablet) {
+
+
+body {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main {
+  &__greeting,
+  &__greeting--followedByOverlapEffectElem
+  {
+    font-size: 1.5em;
+    line-height: 1.5;
+  }
+
+  &__greeting {
+    margin: $commonBlockSpacing 0;
+    margin-bottom: $commonBlockSpacing * 2;
+  }
+}
+
+.containerCta,
+.containerCta--center,
+ {
+  display: flex;
+  justify-content: space-between;
+
+  &--center {
+    justify-content: center;
+  }
+}
+
+.ctaCard {
+  width: 49%;
+
+  &__headline {
+    font-size: 1.5em;
+  }
+
+  &__collectEmailForm {
+    display: flex;
+
+    &__textInput {
+      margin: 0;
+    }
+
+    &__button {
+      margin: 0; // margin is a Safari fix
+      width: 80%; // width 80% is an iPad fix (iOS 9)
+
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+}
+
+
+} // /TABLET and larger
+
+
+
+// =====================
+// = LAPTOP and larger =
+// =====================
+
+@media screen and (min-width: $breakpointLaptop) {
+
+
+.ctaCard {
+  width: 48%;
+}
+
+.containerPageContentArea,
+.containerPageContentArea--pageJoin {
+  // Stretch out beyond our parent container for full bleed background
+  margin-left: -$commonBlockSpacing * 4;
+  margin-right: -$commonBlockSpacing * 4;
+  padding: $commonBlockSpacing * 4;
+
+  // Pull up item below (which should always be .containerCta)
+  // for overlap effect
+  padding-bottom: $overlapMeasurement_pageContentArea * 2;
+  margin-bottom: -$overlapMeasurement_pageContentArea * 2;
+
+  .pageContentArea {
+    padding: 0 8em;
+
+    &__image {
+      margin-top: -$overlapMeasurement_pageContentArea * 1.6;
+    }
+  }
+}
+
+.containerPageContentArea--pageJoin {
+  padding-top: $commonBlockSpacing;
+}
+
+
+
+} // /LAPTOP and larger
+

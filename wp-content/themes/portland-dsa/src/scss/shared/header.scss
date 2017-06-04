@@ -1,61 +1,265 @@
-header {
-  height: 150px;
-
-  h1 {
-    display: inline-block;
-    margin-top: 4rem;
-    line-height: 1;
-  }
-}
-
-header,
-.callout,
-.cta-container {
-  padding: 0 60px;
-}
-
-.header--logo {
-  float: left;
-  height: 150px;
-  margin-right: 1rem;
-}
-
-.header--dsa {
-  color: $color-red;
-  display: block;
-}
-
-.main-nav {
-  color: $color-gray;
-  margin: 1rem 0 0;
-}
-
-.main-nav--item {
-  display: inline-block;
-  font-size: $type-size-medium;
-  margin: 0 4rem 0 0;
-}
-
-.navigation-social {
+// Shared header styles
+// -----------------------------------
+// Apply to both isClosedMenu and isOpenedMenu
+// Cleanest to just use a little local mixin and call it below
+@mixin shared__toggleButton {
   position: absolute;
-  right: 1rem;
-  top: 1rem;
+  top: 0.5em;
+  right: $commonBlockSpacing;
+  padding: 0.6em 1em;
+  // Klima font has funky baseline stuff going on. Have to do a padding hack :(
+  padding-bottom: 0.35em;
+
+  border: 2px solid #B60000;
+  border-radius: 5px;
+
+  cursor: pointer;
+  opacity: 0.9;
+  background-color: $colorRedDark;
+  color: white;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 100;
+  font-size: 0.9em;
 }
 
-.navigation-social--element-container {
-  display: inline-block;
+@mixin shared__logo( $width, $height ) {
+  width: $width;
+  height: $height;
+
+  background: $colorRed url("/assets/images/portland-dsa-logo.svg") no-repeat center center;
+  background-size: $width $height;
 }
 
-.social-icon {
-  @include icon;
 
-  &::after {
-    content: '' !important;
+.header {
+  // Menu toggled closed (moble screens)
+  // -----------------------------------
+  &--isClosedMenu {
+    @include baseModuleFontSize();
+
+    display: flex;
+    flex-direction: column-reverse;
+
+    .nameplate {
+      display: flex;
+      align-items: flex-end;
+      padding: $commonBlockSpacing;
+
+      .forcedLinebreak::before {
+        // Thanks Chris: https://css-tricks.com/injecting-line-break/
+        content: '\A';
+        white-space: pre;
+      }
+
+      &__logo {
+        @include shared__logo( $logoWidth, $logoHeight );
+        padding: 3.5em 3em;
+      }
+
+      &__title {
+        margin-left: 0.5em;
+        font-size: 1.1em;
+        line-height: 1.1;
+        color: $colorRed;
+
+        &__cityState {
+          color: black;
+        }
+
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+
+    .nav {
+      height: 3em;
+      background-color: $colorRed;
+
+      &__toggleButton {
+        @include shared__toggleButton();
+      }
+
+      // This is probably a <ul>
+      &__itemContainer {
+        display: none;
+      }
+    }
+  }
+
+  // Menu toggled open (moble screens)
+  // ---------------------------------
+  &--isOpenedMenu {
+    @include baseModuleFontSize();
+
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    padding: 1em;
+
+    background-color: $colorRed;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+
+    .nameplate {
+      &__logo {
+        @include shared__logo( $logoWidth, $logoHeight );
+        // padding: 3.5em 3em;
+      }
+
+      &__title {
+        margin-top: 1em;
+        font-size: 1.1em;
+        line-height: 1.1;
+
+        a {
+          text-decoration: none;
+          color: black;
+        }
+      }
+    }
+
+    .nav {
+      &__toggleButton {
+        @include shared__toggleButton();
+      }
+
+      // This is probably a <ul>
+      &__itemContainer {
+        list-style: none;
+      }
+
+      // This is probably being applied to an LI tag
+      &__item {
+        margin: 1em 0;
+      }
+
+      &__itemLink {
+        font-size: 1.4em;
+        text-decoration: none;
+        color: white;
+      }
+    }
   }
 }
 
-@each $account in (twitter facebook instagram vimeo youtube) {
-  .navigation-social--#{$account} {
-    background-image: url('assets/images/#{$account}.svg');
+.socialLinks--header {
+  display: none;
+}
+
+
+
+// ##################################################################
+// ####### Media Queries ############################################
+// ##################################################################
+
+// =====================
+// = TABLET and larger =
+// =====================
+@media screen and (min-width: $breakpointTablet) {
+
+
+.header {
+  // Menu toggled closed (moble screens);
+  // these style for the desktop (ahem, "non-mobile" ) as well!
+  // -----------------------------------
+  &--isClosedMenu,
+  &--isOpenedMenu {
+    display: block;
+    margin-right: $commonBlockSpacing;
+    margin-bottom: $commonBlockSpacing * 3;
+
+    .nameplate {
+      padding: 0;
+
+      // This linebreak is for mobile-only, so here we remove its effects
+      .forcedLinebreak::before {
+        content: ' ';
+        white-space: normal;
+      }
+
+      &__logo {
+        @include shared__logo( $logoWidth * 1.3, $logoHeight * 1.3 );
+        padding: 4.5em 4em;
+      }
+
+      &__title {
+        margin-bottom: 1.3em;
+        font-size: 1.6em;
+      }
+    }
+
+    .nav {
+      height: auto;
+      background-color: $colorWhite;
+      font-size: 1.2em;
+
+      &__toggleButton {
+        display: none;
+      }
+
+      // This is probably a <ul>
+      &__itemContainer {
+        display: flex;
+        justify-content: space-between;
+        margin-left: 143px;
+        margin-right: $commonBlockSpacing;
+        margin-top: -1em;
+      }
+
+      // &__item {}
+
+      &__itemLink {
+        color: $colorGray;
+        text-decoration: none;
+        font-weight: normal;
+      }
+    }
   }
 }
+
+.socialLinks--header {
+  @include socialLinks( 20px, 20px );
+
+  display: block;
+  position: absolute;
+  top: 0;
+  right: $commonBlockSpacing;
+}
+
+
+} // /TABLET and larger
+
+
+// =====================
+// = LAPTOP and larger =
+// =====================
+@media screen and (min-width: $breakpointLaptop) {
+
+
+
+.header {
+  // Menu toggled closed (moble screens);
+  // these style for the desktop (ahem, "non-mobile" ) as well!
+  // -----------------------------------
+  &--isClosedMenu,
+  &--isOpenedMenu {
+    .nameplate {
+      &__title {
+        margin-left: $commonBlockSpacing * 2;
+      }
+    }
+
+  .nav {
+      // This is probably a <ul>
+      &__itemContainer {
+        margin-left: 160px;
+      }
+    }
+  }
+}
+
+
+
+} // /LAPTOP and larger
